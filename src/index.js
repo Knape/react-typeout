@@ -77,7 +77,7 @@ class TypeOut extends Component {
   render() {
     const { currentWord } = this.state;
     return (
-      <span> &#8203; {currentWord} &#8203;</span>
+      <span>{currentWord}</span>
     );
   }
 }
