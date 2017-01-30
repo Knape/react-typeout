@@ -21,7 +21,6 @@ class TypeOut extends Component {
 
   shuffleWords(words, random) {
     const { index } = this.state;
-    console.log(words);
     return random ? shuffle(words) : index + 1;
   }
 
