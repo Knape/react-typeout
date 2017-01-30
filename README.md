@@ -3,6 +3,8 @@
 
  Simply a react component that types by itself. Enter in any string, and watch it type at the speed you've set, backspace what it's typed, and begin a new sentence for however many strings you've set.
 
+## Installation
+
 Install the package from [npm](https://npmjs.com/release)
 
 ```bash
