@@ -32,10 +32,10 @@ class TypeOut extends Component {
    * @param  {string} word    The entire word.
    */
   addChar(index, max, words) {
-    const { nextSpeed, pauseSpeed } = this.props;
+    const { typeSpeed, pauseSpeed } = this.props;
     // When we get to the last char in the word we stop read the pauseSpeed
-    // instead of the nextSpeed
-    const addSpeed = index < max ? nextSpeed : pauseSpeed;
+    // instead of the typeSpeed
+    const addSpeed = index < max ? typeSpeed : pauseSpeed;
     const currentWord = words[0].slice(0, index);
     this.setState({currentWord});
 
@@ -88,7 +88,7 @@ TypeOut.defaultProps = {
   currentWord: null,
   pauseSpeed: 1000,
   rewindSpeed: 50,
-  nextSpeed: 200,
+  typeSpeed: 200,
   done: null,
 };
 
@@ -98,7 +98,7 @@ TypeOut.propTypes = {
   words: PropTypes.arrayOf(PropTypes.string).isRequired,
   pauseSpeed: PropTypes.number,
   rewindSpeed: PropTypes.number,
-  nextSpeed: PropTypes.number,
+  typeSpeed: PropTypes.number,
   // done: PropTypes.func,
 };
 
