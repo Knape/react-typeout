@@ -5,11 +5,11 @@
   "keywords": [],
   "main": "lib/index.js",
   "scripts": {
-    "clean": "rimraf ./lib",
+    "clean": "node_modules/.bin/rimraf ./lib",
     "build:lib": "node_modules/.bin/babel src/ -d lib/",
     "build": "npm run clean && npm run build:lib",
-    "lint": "eslint src/",
-    "test": "karma start test/karma.conf.js",
+    "lint": "node_modules/.bin/eslint src/",
+    "test": "node_modules/.bin/karma start test/karma.conf.js",
     "demo:watch": "webpack-dev-server --inline --config webpack.config.js --content-base examples --port 8721",
     "demo:build": "NODE_ENV=production webpack",
     "prepublish": "npm run lint && npm run build"
