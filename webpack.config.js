@@ -33,14 +33,14 @@ module.exports = {
   },
 
   entry: {
-    app: './examples/app.js',
+    app: './docs/app.js',
   },
 
   watch: DEV_MODE,
   devtool: DEV_MODE ? 'inline-source-map' : 'source-map',
 
   output: {
-    path: path.join(__dirname, 'examples/js/'),
+    path: path.join(__dirname, 'docs/js/'),
     filename: 'bundle.min.js',
     publicPath: '/js/'
   },
