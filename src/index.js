@@ -71,7 +71,6 @@ class TypeOut extends Component {
   changeWord(lastWord = null, words) {
     const { random } = this.props;
     const shuffledWords = this.shuffleWords(words, random, lastWord);
-    console.log(shuffledWords);
     this.addChar(0, shuffledWords[0].length, shuffledWords);
   }
 
