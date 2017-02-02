@@ -4,9 +4,11 @@
 
 ###### BREAKING CHANGES
 
-- Random is now set to false by default in props
+- `random` is now set to `false` by default in props
 
 ---
+
+### Releases
 
 ### `0.5.4` — February 2, 2017
 
