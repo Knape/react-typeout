@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { shuffle } from './utils';
+import { shuffle, move } from './utils';
 class TypeOut extends Component {
 
   constructor(props) {
@@ -7,7 +7,6 @@ class TypeOut extends Component {
 
     this.state = {
       currentSentence: this.props.words[0],
-      index: -1,
     };
 
     this.addChar = this.addChar.bind(this);
@@ -16,12 +15,15 @@ class TypeOut extends Component {
   }
 
   componentDidMount() {
+    if (this.props.words.lenghth < 1) {
+      console.warn('react-typeout requires a length minimum of one');
+      return;
+    }
     this.changeWord(null, this.props.words);
   }
 
-  shuffleWords(words, random) {
-    const { index } = this.state;
-    return random ? shuffle(words) : index + 1;
+  setNewOrder(words, random) {
+    return random ? shuffle(words) : move(words);
   }
 
   /**
@@ -70,8 +72,8 @@ class TypeOut extends Component {
 
   changeWord(lastWord = null, words) {
     const { random } = this.props;
-    const shuffledWords = this.shuffleWords(words, random, lastWord);
-    this.addChar(0, shuffledWords[0].length, shuffledWords);
+    const newOrderWords = this.setNewOrder(words, random, lastWord);
+    this.addChar(0, newOrderWords[0].length, newOrderWords);
   }
 
   render() {
@@ -86,7 +88,7 @@ class TypeOut extends Component {
 
 TypeOut.defaultProps = {
   infinitive: true,
-  random: true,
+  random: false,
   currentSentence: null,
   pauseSpeed: 1000,
   rewindSpeed: 50,
