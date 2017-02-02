@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TyoeOut from '../../src';
+import TypeOut from '../../src';
 import { mount } from 'enzyme';
 
   before(() => {
@@ -23,8 +23,15 @@ import { mount } from 'enzyme';
 
 
   describe('TypeOut', () => {
-    it('Should just pass for now', () => {
-      expect(true).to.eql(true);
+    it('Should mount a span component with class react-typeout', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.hasClass('react-typeout')).to.eql(true);
+    });
+
+    it('Should mount a span component with class react-typeout-test', () => {
+      const wrapper = mount(<TypeOut className="react-typeout-test" words={['one', 'two']} />);
+      expect(wrapper.hasClass('react-typeout-test')).to.eql(true);
+      expect(wrapper.hasClass('react-typeout')).to.eql(false);
     });
   });
 
