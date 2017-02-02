@@ -1,6 +1,6 @@
 {
   "name": "react-typeout",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Simply a react component that types by itself.",
   "keywords": ["react", "typewriter", "component"],
   "main": "lib/index.js",
