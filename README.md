@@ -57,6 +57,14 @@ Defaults to: `50`
 The `pauseSpeed` property specifies the we will wait before typing out next word/sentence after one is complete.
 Defaults to: `1000`
 
+#### `Node`: PropTypes.string
+The `Node` property specifies the tag type our text will be rendered inside
+Defaults to: `span`
+
+#### `className`: PropTypes.string
+The `className` property specifies the class that react-typeout will have
+Defaults to: `react-typeout`
+
 ## License
 
 [MIT](LICENSE). Copyright (c) 2016 Philip Knape.
