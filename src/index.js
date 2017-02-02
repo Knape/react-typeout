@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import { shuffle, move } from './utils';
+import { shuffle, move, getFirst } from './utils';
 class TypeOut extends Component {
 
   constructor(props) {
@@ -38,7 +38,7 @@ class TypeOut extends Component {
     // When we get to the last char in the word we stop read the pauseSpeed
     // instead of the typeSpeed
     const addSpeed = index < max ? typeSpeed : pauseSpeed;
-    const currentSentence = words[0].slice(0, index);
+    const currentSentence = getFirst(words).slice(0, index);
     this.setState({currentSentence});
 
     setTimeout(() => {
@@ -58,7 +58,7 @@ class TypeOut extends Component {
    */
   removeChar(index, min, words) {
     const { rewindSpeed } = this.props;
-    const currentSentence = words[0].slice(0, index);
+    const currentSentence = getFirst(words).slice(0, index);
     this.setState({currentSentence});
 
     setTimeout(() => {
@@ -66,14 +66,14 @@ class TypeOut extends Component {
       // word or if we need to start removming chars
       return (index > min)
         ? this.removeChar(index - 1, min, words)
-        : this.changeWord(words[0], words);
+        : this.changeWord(getFirst(words), words);
     }, rewindSpeed);
   }
 
   changeWord(lastWord = null, words) {
     const { random } = this.props;
     const newOrderWords = this.setNewOrder(words, random, lastWord);
-    this.addChar(0, newOrderWords[0].length, newOrderWords);
+    this.addChar(0, getFirst(newOrderWords).length, newOrderWords);
   }
 
   render() {

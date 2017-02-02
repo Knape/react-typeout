@@ -13,3 +13,5 @@ export const shuffle = (array) => {
 export const move = (array, steps = 1) => {
   return [].concat(array.slice(steps), array.slice(0, steps));
 };
+
+export const getFirst = (array) => array[0];
