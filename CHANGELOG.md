@@ -2,6 +2,14 @@
 
 ---
 
+### `0.5.4` — February 2, 2017
+
+###### CHANGES
+
+- allow to set `tag` with `Node` prop, defaults to `span`
+- allow to set `class` with `className` prop, defaults to `react-typeout`
+- removed hidden chars before and after text inside node tag
+
 ### `0.5.3` — January 30, 2017
 
 ###### BREAKING CHANGES
