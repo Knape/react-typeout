@@ -6,7 +6,7 @@ class TypeOut extends Component {
     super(props);
 
     this.state = {
-      currentWord: this.props.words[0],
+      currentSentence: this.props.words[0],
       index: -1,
     };
 
@@ -25,7 +25,7 @@ class TypeOut extends Component {
   }
 
   /**
-   * Alters currentWord string to include one more char
+   * Alters currentSentence string to include one more char
    *
    * @param  {Number} index   The current index of the word we slicing
    * @param  {Number} max     The max length of the word.
@@ -36,8 +36,8 @@ class TypeOut extends Component {
     // When we get to the last char in the word we stop read the pauseSpeed
     // instead of the typeSpeed
     const addSpeed = index < max ? typeSpeed : pauseSpeed;
-    const currentWord = words[0].slice(0, index);
-    this.setState({currentWord});
+    const currentSentence = words[0].slice(0, index);
+    this.setState({currentSentence});
 
     setTimeout(() => {
       // After the timeout is done we check if we can add a new char to our
@@ -48,7 +48,7 @@ class TypeOut extends Component {
     }, addSpeed);
   }
   /**
-   * Alters currentWord string to remove one more char
+   * Alters currentSentence string to remove one more char
    *
    * @param  {Number} index   The current index of the word we slicing
    * @param  {Number} min     The min length of the word.
@@ -56,8 +56,8 @@ class TypeOut extends Component {
    */
   removeChar(index, min, words) {
     const { rewindSpeed } = this.props;
-    const currentWord = words[0].slice(0, index);
-    this.setState({currentWord});
+    const currentSentence = words[0].slice(0, index);
+    this.setState({currentSentence});
 
     setTimeout(() => {
       // After the timeout is done we check if we can add a new char to our
@@ -75,9 +75,11 @@ class TypeOut extends Component {
   }
 
   render() {
-    const { currentWord } = this.state;
+    const { currentSentence } = this.state;
+    const { className, caret, Node } = this.props;
+    const caretNode = caret ? <span className="react-typeout-caret"></span> : null;
     return (
-      <span>{currentWord}</span>
+      <Node className={className}>{currentSentence}{caretNode}</Node>
     );
   }
 }
@@ -85,21 +87,25 @@ class TypeOut extends Component {
 TypeOut.defaultProps = {
   infinitive: true,
   random: true,
-  currentWord: null,
+  currentSentence: null,
   pauseSpeed: 1000,
   rewindSpeed: 50,
   typeSpeed: 200,
   done: null,
+  className: 'react-typeout',
+  Node: 'span',
+  caret: false,
 };
 
 TypeOut.propTypes = {
-  // infinitive: PropTypes.bool,
   random: PropTypes.bool,
   words: PropTypes.arrayOf(PropTypes.string).isRequired,
   pauseSpeed: PropTypes.number,
   rewindSpeed: PropTypes.number,
   typeSpeed: PropTypes.number,
-  // done: PropTypes.func,
+  className: PropTypes.string,
+  Node: PropTypes.string,
+  caret: PropTypes.bool,
 };
 
 export default TypeOut;
