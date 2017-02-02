@@ -1,5 +1,11 @@
 # Changelog
 
+### In progress
+
+###### BREAKING CHANGES
+
+- Random is now set to false by default in props
+
 ---
 
 ### `0.5.4` — February 2, 2017
