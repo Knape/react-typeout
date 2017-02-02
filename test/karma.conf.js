@@ -91,7 +91,6 @@ module.exports = (config) => {
     // enable / disable colors in the output (reporters and logs)
     colors: true,
 
-
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_DEBUG,
@@ -103,12 +102,12 @@ module.exports = (config) => {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: [process.env.TRAVIS ? 'Firefox' : 'Firefox'],
+    browsers: ['Firefox'],
 
     browserNoActivityTimeout: 60000,
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: !process.env.TRAVIS,
+    singleRun: process.env.TRAVIS,
   });
 };
