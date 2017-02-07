@@ -42,8 +42,8 @@ render(<App/>, document.getElementById('app'));
 The `words` property is the only required prop. Here you set all the words/sentences you would like it to type out.
 
 #### `random`: PropTypes.bool
-The `random` property specifies wether the array of words sould be typed out in its correct order or random order.
-Defaults to: `true`
+The `random` property specifies wether the array of words should be typed out in its correct order or random order.
+Defaults to: `false`
 
 #### `typeSpeed`: PropTypes.number
 The `typeSpeed` property specifies the speed of each char in the sentence to be typed.
