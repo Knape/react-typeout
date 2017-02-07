@@ -2,13 +2,15 @@
 
 ### In progress
 
-###### BREAKING CHANGES
-
-- `random` is now set to `false` by default in props
-
 ---
 
 ### Releases
+
+### `0.6.0` — February 7, 2017
+
+###### BREAKING CHANGES
+
+- `random` is now set to `false` by default in props
 
 ### `0.5.4` — February 2, 2017
 
