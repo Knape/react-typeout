@@ -71,6 +71,11 @@ module.exports = (config) => {
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: process.env.TRAVIS ? [] : ['progress', 'coverage'],
 
+    // please don’t spam the console when running in karma!
+    webpackServer: {
+      noInfo: true,
+    },
+
     coverageReporter: {
       dir: 'test',
       reporters: [{
@@ -87,7 +92,6 @@ module.exports = (config) => {
     // web server port
     port: 9876,
 
-
     // enable / disable colors in the output (reporters and logs)
     colors: true,
 
@@ -98,7 +102,6 @@ module.exports = (config) => {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
-
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher

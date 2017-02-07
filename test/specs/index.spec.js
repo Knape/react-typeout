@@ -33,9 +33,52 @@ import { mount } from 'enzyme';
       expect(wrapper.hasClass('react-typeout-test')).to.eql(true);
       expect(wrapper.hasClass('react-typeout')).to.eql(false);
     });
+
+    it('Should have default random props if none is set', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.prop('random')).to.eql(false);
+    });
+
+    it('Should allow to set the random prop to true', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} random />);
+      expect(wrapper.prop('random')).to.eql(true);
+    });
+
+    it('Should have default typeSpeed props if none is set', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.prop('typeSpeed')).to.eql(200);
+    });
+
+    it('Should allow to set the typeSpeed prop to number', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} typeSpeed={300} />);
+      expect(wrapper.prop('typeSpeed')).to.eql(300);
+    });
+
+    it('Should have default rewindSpeed props if none is set', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.prop('rewindSpeed')).to.eql(50);
+    });
+
+    it('Should allow to set the rewindSpeed prop to number', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} rewindSpeed={300} />);
+      expect(wrapper.prop('rewindSpeed')).to.eql(300);
+    });
+
+    it('Should have default pauseSpeed props if none is set', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.prop('pauseSpeed')).to.eql(1000);
+    });
+
+    it('Should allow to set the pauseSpeed prop to number', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} pauseSpeed={300} />);
+      expect(wrapper.prop('pauseSpeed')).to.eql(300);
+    });
+
+    it('Should render text inside component after 1s', (done) => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} pauseSpeed={300} />);
+      setTimeout(() => {
+        expect(wrapper.text().length).to.be.above(0);
+        done();
+      }, 300);
+    });
   });
-
-
-  // it('Component should have length of 2', () => {
-  //     expect(wrapper.find('div').children().length).to.have.length(2)
-  // })
