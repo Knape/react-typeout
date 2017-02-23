@@ -1,3 +1,6 @@
+/* globals it, describe, before, beforeEach, expect, chai, sinonChai, sinon, fixture */
+/* eslint no-unused-expressions: 0 */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TypeOut from '../../src';
@@ -11,6 +14,7 @@ import { mount } from 'enzyme';
   let div;
 
   beforeEach(() => {
+    sinon.spy(console, 'warn');
     div = document.createElement('div');
     document.body.appendChild(div);
   });
@@ -19,6 +23,7 @@ import { mount } from 'enzyme';
     ReactDOM.unmountComponentAtNode(div);
     div.parentNode.removeChild(div);
     window.scrollTo(0, 0);
+    console.warn.restore();
   });
 
 
@@ -74,11 +79,25 @@ import { mount } from 'enzyme';
       expect(wrapper.prop('pauseSpeed')).to.eql(300);
     });
 
-    it('Should render text inside component after 1s', (done) => {
+    it('Should warn if we dont pass any text', () => {
+      const wrapper = mount(<TypeOut words={[]} pauseSpeed={300} />);
+      expect(console.warn).to.have.been.called;
+    });
+
+    it('Should render text inside component after 300ms', (done) => {
       const wrapper = mount(<TypeOut words={['one', 'two']} pauseSpeed={300} />);
       setTimeout(() => {
         expect(wrapper.text().length).to.be.above(0);
         done();
       }, 300);
     });
+
+    it('Should render text inside component after 1s', (done) => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} typeSpeed={20} />);
+      setTimeout(() => {
+        expect(wrapper.text().length).to.be.above(0);
+        done();
+      }, 1000);
+    });
+
   });
