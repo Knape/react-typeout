@@ -6,6 +6,12 @@
 
 ### Releases
 
+### `0.6.1` — February 23, 2017
+
+###### CHANGES
+
+- fixed type in check for empty array
+
 ### `0.6.0` — February 7, 2017
 
 ###### BREAKING CHANGES
