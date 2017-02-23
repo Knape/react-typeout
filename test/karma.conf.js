@@ -71,7 +71,7 @@ module.exports = (config) => {
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
-      'karma-coverage',
+      'karma-coveralls',
       'istanbul-instrumenter-loader',
     ],
 

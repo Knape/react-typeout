@@ -1,6 +1,9 @@
 
 ## React typeout
 
+[![Build Status](https://travis-ci.org/Knape/react-typeout.svg?branch=master)](https://travis-ci.org/Knape/react-typeout)
+[![Coverage Status](https://coveralls.io/repos/github/Knape/react-typeout/badge.svg?branch=master)](https://coveralls.io/github/Knape/react-typeout?branch=master)
+
 Simply a React Component that types by itself. Add any Array of strings, and watch it type at the speed you've set, backspace what it's typed, and begin a new sentence for however many strings you've set.
 
 ## Installation
