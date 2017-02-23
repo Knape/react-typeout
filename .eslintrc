@@ -34,13 +34,5 @@
   "plugins": [
     "react"
   ],
-  "globals": {
-    "__DEVSERVER__": true,
-    "__DEVCLIENT__": true,
-    "__API_URL__": true,
-    "__VERSION__": true,
-    "__ANALYTICS__": true,
-    "__ENV__": true,
-    "__COOKIE__": true,
-  }
+  "globals": {}
 }

@@ -9,7 +9,13 @@ module.exports = (config) => {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'sinon', 'sinon-chai'],
+
+    client: {
+      chai: {
+        includeStack: true
+      }
+    },
 
     // list of files / patterns to load in the browser
     files: [
@@ -60,16 +66,19 @@ module.exports = (config) => {
       'karma-mocha',
       'karma-coverage',
       'karma-chai',
+      'karma-sinon-chai',
+      'karma-sinon',
       'karma-sourcemap-loader',
       'karma-chrome-launcher',
       'karma-firefox-launcher',
+      'karma-coverage',
       'istanbul-instrumenter-loader',
     ],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: process.env.TRAVIS ? [] : ['progress', 'coverage'],
+    reporters: process.env.TRAVIS ? ['progress', 'coverage', 'coveralls'] : ['progress', 'coverage'],
 
     // please don’t spam the console when running in karma!
     webpackServer: {
@@ -99,13 +108,12 @@ module.exports = (config) => {
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_DEBUG,
 
-
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: process.env.TRAVIS ? ['Firefox'] : ['Firefox'],
 
     browserNoActivityTimeout: 60000,
 
