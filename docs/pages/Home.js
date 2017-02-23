@@ -6,7 +6,7 @@ const Home = () => {
     return (
       <div className="container">
         <h1>
-          <TypeOut words={['mal', 'martin']} typeSpeed={100} />
+          <TypeOut words={sentences} typeSpeed={100} />
         </h1>
       </div>
     );
