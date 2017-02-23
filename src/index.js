@@ -15,7 +15,7 @@ class TypeOut extends Component {
   }
 
   componentDidMount() {
-    if (this.props.words.lenghth < 1) {
+    if (this.props.words.length < 1) {
       console.warn('react-typeout requires a length minimum of one');
       return;
     }
