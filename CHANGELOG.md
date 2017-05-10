@@ -6,6 +6,12 @@
 
 ### Releases
 
+### `0.6.3` — May 10, 2017
+
+###### CHANGES
+
+- Fixed a bug where our recursive function continued running even though the component where unmounted 
+
 ### `0.6.1` — February 23, 2017
 
 ###### CHANGES
