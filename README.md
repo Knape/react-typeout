@@ -21,7 +21,7 @@ npm install --save react-typeout
 ```js
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import TypeOut from 'TypeOut';
+import TypeOut from 'react-typeout';
 
 const words = ['the first sentence', 'the second sentence'];
 
