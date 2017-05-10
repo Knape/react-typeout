@@ -1,12 +1,27 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import {
+  BrowserRouter as Router,
+  Route,
+  Link
+} from 'react-router-dom';
 
-import Home from './pages/home';
+import Home from './pages/Home';
+import About from './pages/About';
 
 const routes = (
-  <Router history={hashHistory}>
-    <Route path="/" component={Home} />
+  <Router>
+    <div>
+      {
+        // <ul className="menu">
+        //   <li><Link to="/">Home</Link></li>
+        //   <li><Link to="/about">About</Link></li>
+        // </ul>
+      }
+
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+    </div>
   </Router>
 );
 

@@ -22,6 +22,14 @@ class TypeOut extends Component {
     this.changeWord(null, this.props.words);
   }
 
+  /**
+   * Clear timouts when unmounting so we can escape our recursive loop
+   */
+  componentWillUnmount() {
+    clearTimeout(this.addTimeout);
+    clearTimeout(this.removeTimeout);
+  }
+
   setNewOrder(words, random) {
     return random ? shuffle(words) : move(words);
   }
@@ -41,7 +49,7 @@ class TypeOut extends Component {
     const currentSentence = getFirst(words).slice(0, index);
     this.setState({currentSentence});
 
-    setTimeout(() => {
+    this.addTimeout = setTimeout(() => {
       // After the timeout is done we check if we can add a new char to our
       // word or if we need to start removming chars
       return (index < max)
@@ -61,7 +69,7 @@ class TypeOut extends Component {
     const currentSentence = getFirst(words).slice(0, index);
     this.setState({currentSentence});
 
-    setTimeout(() => {
+    this.removeTimeout = setTimeout(() => {
       // After the timeout is done we check if we can add a new char to our
       // word or if we need to start removming chars
       return (index > min)

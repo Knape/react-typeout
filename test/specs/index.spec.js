@@ -39,6 +39,12 @@ import { mount } from 'enzyme';
       expect(wrapper.hasClass('react-typeout')).to.eql(false);
     });
 
+    it('Should unmount component and stop loop', () => {
+      const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      const unmounted = wrapper.unmount();
+      console.log(unmounted);
+    });
+
     it('Should have default random props if none is set', () => {
       const wrapper = mount(<TypeOut words={['one', 'two']} />);
       expect(wrapper.prop('random')).to.eql(false);
@@ -91,13 +97,4 @@ import { mount } from 'enzyme';
         done();
       }, 300);
     });
-
-    it('Should render text inside component after 1s', (done) => {
-      const wrapper = mount(<TypeOut words={['one', 'two']} typeSpeed={20} />);
-      setTimeout(() => {
-        expect(wrapper.text().length).to.be.above(0);
-        done();
-      }, 1000);
-    });
-
   });
