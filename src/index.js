@@ -1,5 +1,7 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { shuffle, move, getFirst } from './utils';
+
 class TypeOut extends Component {
 
   constructor(props) {

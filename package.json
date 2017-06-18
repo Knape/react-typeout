@@ -55,5 +55,8 @@
     "url": "https://github.com/Knape/react-typeout/issues"
   },
   "homepage": "https://knape.github.io/react-typeout",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "prop-types": "^15.5.10"
+  }
 }
