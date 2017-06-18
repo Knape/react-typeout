@@ -40,6 +40,7 @@
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-router-dom": "^4.1.1",
+    "react-test-renderer": "^15.6.1",
     "webpack": "~1.11.0",
     "webpack-dev-server": "~1.10.1"
   },
