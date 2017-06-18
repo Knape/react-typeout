@@ -1,4 +1,7 @@
-export const shuffle = (array) => {
+// @flow
+
+export const shuffle = (array: Array<string>): Array<string> => {
+  // create a new copy of the a
   const d = array.slice();
   for (let c = d.length - 1; c > 0; c--) {
     const b = Math.floor(Math.random() * (c + 1));
@@ -10,8 +13,8 @@ export const shuffle = (array) => {
 };
 
 
-export const move = (array, steps = 1) => {
-  return [].concat(array.slice(steps), array.slice(0, steps));
+export const move = (a: Array<string>, steps: number = 1): Array<string> => {
+  return [].concat(a.slice(steps), a.slice(0, steps));
 };
 
-export const getFirst = (array) => array[0];
+export const getFirst = (a: Array<string>): string => a[0];
