@@ -7,7 +7,7 @@ const App = (
   <div className="full-view">
     <div className="container">
       <h1>
-        <TypeOut words={sentences} typeSpeed={100} infinitive={false} />
+        <TypeOut words={sentences} typeSpeed={100} infinitive caret />
       </h1>
     </div>
   </div>
