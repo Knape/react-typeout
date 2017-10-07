@@ -1,4 +1,16 @@
 {
-  "presets": ["stage-3", "es2015", "react", "flow"],
+  "presets": ["stage-3", ["env", {
+    "loose": true,
+    "targets": {
+      "browsers": [
+        "last 2 versions",
+        "Android 4",
+        "iOS 8",
+        "ie 10",
+        "ie_mob 10"
+      ],
+      "node": "current"
+    }
+  }], "react", "flow"],
   "plugins": []
 }
