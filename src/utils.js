@@ -17,4 +17,8 @@ export const move = (a: Array<string>, steps: number = 1): Array<string> => {
   return [].concat(a.slice(steps), a.slice(0, steps));
 };
 
+export const pop = (words: Array<string>, lastWord: String) => {
+  return words.filter((word) => (word !== lastWord));
+};
+
 export const getFirst = (a: Array<string>): string => a[0];

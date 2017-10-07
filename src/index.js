@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { shuffle, move, getFirst } from './utils';
+import { shuffle, move, pop, getFirst } from './utils';
 
 class TypeOut extends Component {
 
@@ -36,6 +36,10 @@ class TypeOut extends Component {
     return random ? shuffle(words) : move(words);
   }
 
+  popLastWord(words, lastWord, infinitive) {
+    return infinitive ? words : pop(words, lastWord);
+  }
+
   /**
    * Alters currentSentence string to include one more char
    *
@@ -59,6 +63,7 @@ class TypeOut extends Component {
         : this.removeChar(index, 0, words);
     }, addSpeed);
   }
+
   /**
    * Alters currentSentence string to remove one more char
    *
@@ -80,23 +85,41 @@ class TypeOut extends Component {
     }, rewindSpeed);
   }
 
+  /**
+   * Selects the new word to render out or exits the recurtion
+   *
+   * @param  {String} lastWord  Prev word that was called/typed out
+   * @param  {Array}  words     Array of all the words
+   */
   changeWord(lastWord = null, words) {
-    const { random } = this.props;
-    const newOrderWords = this.setNewOrder(words, random, lastWord);
-    this.addChar(0, getFirst(newOrderWords).length, newOrderWords);
+    const { random, infinitive, done } = this.props;
+    const newOrderWords = this.setNewOrder(
+      this.popLastWord(words, lastWord, infinitive),
+      random
+    );
+    return newOrderWords.length // eslint-disable-line
+      ? this.addChar(0, getFirst(newOrderWords).length, newOrderWords)
+      : typeof done === 'function' ? done() : null;
   }
 
   render() {
-    const { currentSentence } = this.state;
+    const { currentSentence = null } = this.state;
     const { className, caret, Node } = this.props;
-    const caretNode = caret ? <span className="react-typeout-caret"></span> : null;
+    const caretNode = caret
+      ? <span className="react-typeout-caret">|</span>
+      : null;
+
     return (
-      <Node className={className}>{currentSentence}{caretNode}</Node>
+      <Node className={className}>
+        <span className="react-typeout-text">{currentSentence}</span>
+        {caretNode}
+      </Node>
     );
   }
 }
 
 TypeOut.defaultProps = {
+  words: [],
   infinitive: true,
   random: false,
   currentSentence: null,
@@ -105,16 +128,18 @@ TypeOut.defaultProps = {
   typeSpeed: 200,
   done: null,
   className: 'react-typeout',
-  Node: 'span',
+  Node: 'div',
   caret: false,
 };
 
 TypeOut.propTypes = {
+  infinitive: PropTypes.bool,
   random: PropTypes.bool,
   words: PropTypes.arrayOf(PropTypes.string).isRequired,
   pauseSpeed: PropTypes.number,
   rewindSpeed: PropTypes.number,
   typeSpeed: PropTypes.number,
+  done: PropTypes.func,
   className: PropTypes.string,
   Node: PropTypes.string,
   caret: PropTypes.bool,

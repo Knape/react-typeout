@@ -1,6 +1,6 @@
 /* globals describe, beforeAll, beforeEach, expect, jest */
 
-import { shuffle, move, getFirst } from '../src/utils';
+import { shuffle, move, pop, getFirst } from '../src/utils';
 
 describe('Util functions', () => {
   describe('shuffle items in array', () => {
@@ -31,6 +31,15 @@ describe('Util functions', () => {
       const baseArray = ['one', 'two'];
       const expectedArray = ['two', 'one'];
       expect(move(baseArray)).toEqual(expectedArray);
+    });
+  });
+
+  describe('remove matching word from array', () => {
+    test('should remove the second word', () => {
+      const baseArray = ['one', 'two', 'three', 'four', 'five', 'six'];
+      const toRemove = 'two';
+      const hasLeft = ['one', 'three', 'four', 'five', 'six'];
+      expect(pop(baseArray, toRemove)).toEqual(hasLeft);
     });
   });
 

@@ -27,8 +27,13 @@ import { mount } from 'enzyme';
 
 
   describe('TypeOut', () => {
-    test('Should mount a span component with class react-typeout', () => {
+    test('Should mount a div component with class react-typeout', () => {
       const wrapper = mount(<TypeOut words={['one', 'two']} />);
+      expect(wrapper.hasClass('react-typeout')).toBeTruthy();
+    });
+
+    test('Should not mount when we dont pass an array to words prop', () => {
+      const wrapper = mount(<TypeOut />);
       expect(wrapper.hasClass('react-typeout')).toBeTruthy();
     });
 
@@ -39,8 +44,10 @@ import { mount } from 'enzyme';
     });
 
     test('Should have default random props if none is set', () => {
+      const spy = jest.spyOn(global.console, 'warn');
       const wrapper = mount(<TypeOut words={['one', 'two']} />);
       expect(wrapper.prop('random')).toBeFalsy();
+      expect(spy).toHaveBeenCalled();
     });
 
     test('Should allow to set the random prop to true', () => {
@@ -89,5 +96,34 @@ import { mount } from 'enzyme';
         expect(wrapper.text().length).toBeGreaterThan(0);
         done();
       }, 300);
+    });
+
+    test('Should render each word only once', (done) => {
+      const wrapper = mount(<TypeOut
+        words={['one', 'two']}
+        typeSpeed={10}
+        pauseSpeed={10}
+        rewindSpeed={10}
+        infinitive={false}
+      />);
+      setTimeout(() => {
+        expect(wrapper.text().length).toEqual(0);
+        done();
+      }, 500);
+    });
+
+
+    test('Should call done when finnished', (done) => {
+      const wrapper = mount(<TypeOut
+        words={['one', 'two']}
+        typeSpeed={10}
+        pauseSpeed={10}
+        rewindSpeed={10}
+        infinitive={false}
+        done={() => {
+          expect(wrapper.text().length).toEqual(0);
+          done();
+        }}
+      />);
     });
   });
