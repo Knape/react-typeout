@@ -53,6 +53,55 @@
       font-weight: 600;
     }
 
+    .react-typeout {
+      padding: 0;
+      text-align: left;
+      overflow: hidden;
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -ms-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out;
+    }
+
+    .react-typeout-caret {
+      content: "|";
+      margin-left: 5px;
+      opacity: 1;
+      font-weight: 100;
+      -webkit-animation: blink 0.7s infinite;
+      -moz-animation: blink 0.7s infinite;
+      -ms-animation: blink 0.7s infinite;
+      -o-animation: blink 0.7s infinite;
+      animation: blink 0.7s infinite;
+    }
+
+    @keyframes blink{
+    	0% { opacity:1; }
+    	50% { opacity:0; }
+    	100% { opacity:1; }
+    }
+    @-webkit-keyframes blink{
+    	0% { opacity:1; }
+    	50% { opacity:0; }
+    	100% { opacity:1; }
+    }
+    @-moz-keyframes blink{
+    	0% { opacity:1; }
+    	50% { opacity:0; }
+    	100% { opacity:1; }
+    }
+    @-ms-keyframes blink{
+    	0% { opacity:1; }
+    	50% { opacity:0; }
+    	100% { opacity:1; }
+    }
+    @-o-keyframes blink{
+    	0% { opacity:1; }
+    	50% { opacity:0; }
+    	100% { opacity:1; }
+    }
+
   </style>
 </head>
 <body>

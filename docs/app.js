@@ -1,28 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router,
-  Route,
-  Link
-} from 'react-router-dom';
+import TypeOut from '../src/';
+import sentences from './sentences';
 
-import Home from './pages/Home';
-import About from './pages/About';
-
-const routes = (
-  <Router>
-    <div>
-      {
-        // <ul className="menu">
-        //   <li><Link to="/">Home</Link></li>
-        //   <li><Link to="/about">About</Link></li>
-        // </ul>
-      }
-
-      <Route exact path="/" component={Home} />
-      <Route path="/about" component={About} />
+const App = (
+  <div className="full-view">
+    <div className="container">
+      <h1>
+        <TypeOut words={sentences} typeSpeed={100} infinitive={false} />
+      </h1>
     </div>
-  </Router>
+  </div>
 );
 
-ReactDOM.render(routes, document.getElementById('app'));
+ReactDOM.render(App, document.getElementById('app'));
