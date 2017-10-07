@@ -8,7 +8,7 @@ Simply a React Component that types by itself. Add any Array of strings, and wat
 
 ## Installation
 
-Install the package from [npm](https://npmjs.com/release)
+Install the package from [npm](https://npmjs.com/react-typeout)
 
 ```bash
 npm install --save react-typeout
@@ -50,6 +50,10 @@ The `random` property specifies wether the array of words should be typed out in
 
 Defaults to: `false`
 
+#### `infinitive`: PropTypes.bool
+The `infinitive` property specifies if words can be typed multiple times
+
+Defaults to: `true`
 
 #### `typeSpeed`: PropTypes.number
 The `typeSpeed` property specifies the speed of each char in the sentence to be typed.
@@ -79,6 +83,61 @@ Defaults to: `span`
 The `className` property specifies the class that react-typeout will have
 
 Defaults to: `react-typeout`
+
+#### `caret`: PropTypes.bool
+The `caret` property specifies if react-typeout should render a caret after the word, See styling documentation best result. Caret will always use the `className` of `react-typeout-caret`
+
+Defaults to: `false`
+
+#### `done`: PropTypes.func
+The `done` property specifies if a method should be called then react-typeout has no words left to print. `infinitive`needs to be `false`
+
+Defaults to: `null`
+
+## Styling
+
+Basic caret styling
+
+```css
+.react-typeout-caret {
+  content: "|";
+  margin-left: 5px;
+  opacity: 1;
+  font-weight: 100;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  -ms-animation: blink 0.7s infinite;
+  -o-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-ms-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-o-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+```
 
 ## License
 
